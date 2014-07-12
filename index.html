@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	
+		<style>
+		
+		body {
+			width: 100%;
+			margin: 0 auto;
+			text-align: center;
+		}
+		
+		h1 {
+			font-family: helvetica;
+			font-size: 5em;
+		}
+		
+		#button-options {
+			margin-top: 5em;
+		}
+		
+		button {
+			width: 200px;
+			height: 100px;
+			border-radius: none;
+			border: 1px solid #cfcfcf;
+			background-color: white;
+			font-size: 2em;
+			font-family: helvetica;
+			color: #cfcfcf;
+		}
+		
+		#playbtn {
+			margin-top: 3em;
+		}
+		
+		#play {
+			background-color: lightgreen;
+			color: white;
+		}
+		
+		#endResult {
+			font-size: 5em;
+			color: orange;
+			font-weight: bold;
+			font-family: helvetica;
+			margin-top: -.1em;
+		}
+		
+		#compsays {
+			font-family: helvetica;
+			font-size: 3em;
+			font-weight: bold;
+			color: #cfcfcf;
+		}
+		
+		#phrase {
+			margin-top: 1em;
+		}
+		
+		#vs {
+			font-family: helvetica;
+			color: #cfcfcf;
+			font-weight: bold;
+			font-size: 2em;
+		}
+		
+		
+		
+		</style>
+	
+	</head>
+
+	
+	<body>
+	
+		<!--<h1>Rock, Paper, Sissors!</h1>-->
+		
+		<div id="button-options">
+		
+			<button id="rock" onclick='choose("rock")'> ROCK </button>
+			<button id="paper" onclick='choose("paper")'> PAPER </button>
+			<button id="sissors" onclick='choose("scissors")'> SCISSORS </button>
+		
+		</div>
+		
+		
+		<p id="vs">VS.</p>
+<!--		<div id="playbtn">
+		
+			<button id="play" onClick='compare(user, computerChoice)'> START! </button>
+		
+		</div>-->
+		
+		<div id="compsays">
+		
+			<span id="compchoice"> </span>
+		
+		</div>
+		
+		<div id="answer">
+			
+				<p id="endResult"></p>
+		
+		</div>
+		
+		<script type="text/javascript">
+		
+//		alert("part 1")
+		
+		function choose(whatTheHellTheyChose){
+	
+		var computerChoice = Math.random();
+		console.log(computerChoice);
+		
+		if (computerChoice <= 0.33) {
+		    computerChoice = "rock";
+		}
+		else if (computerChoice >= 0.34 && computerChoice <= 0.66) {
+		    computerChoice = "paper";
+		}
+		else {
+		    computerChoice = "scissors";
+		}	
+		
+		document.getElementById("compchoice").innerHTML = '<span id="phrase"The computer picked</span> <img id="answer" src="images/'+computerChoice+'.jpg">';
+		
+		compare(whatTheHellTheyChose, computerChoice);
+		
+		}
+		
+//		alert("part 2")
+		
+		var compare = function(choice1, choice2) {
+		    if (choice1 === choice2) {
+		        document.getElementById("endResult").innerHTML = "Try again, we tied.";
+		    }
+		    else if (choice1 === "rock") {
+		        if (choice2 === "scissors") {
+		            document.getElementById("endResult").innerHTML = "You Win!";
+		        }
+		        else {
+		            document.getElementById("endResult").innerHTML = "You Lose Sucka!";
+		        }
+		    }
+		    else if (choice1 === "paper") {
+		        if (choice2 === "rock") {
+		            document.getElementById("endResult").innerHTML = "You Win!";
+		        }
+		        else if (choice2 ==="scissors") {
+		            document.getElementById("endResult").innerHTML = "You Lose Sucka!";
+		        }
+		    }
+		    else if (choice1 === "scissors") {
+		        if (choice2 === "rock") {
+		            document.getElementById("endResult").innerHTML = "You Win!";
+		        }
+		        else if (choice2 === "paper") {
+		            document.getElementById("endResult").innerHTML = "You Lose Sucka!";
+		        }
+		    }
+		    else {
+		        document.getElementById("endResult").innerHTML = "ERROR!";
+		    }
+		}
+		
+
+							
+		</script>
+	
+	</body>
+
+
+</html>
